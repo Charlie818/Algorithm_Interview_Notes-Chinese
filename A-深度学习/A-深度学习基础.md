@@ -380,12 +380,15 @@ Index
 - 一般使用服从的**高斯分布**（`mean=0, stddev=1`）或**均匀分布**的随机值作为**权重**的初始化参数；使用 `0` 作为**偏置**的初始化参数
 - 一些**启发式**方法会根据**输入与输出的单元数**来决定初始值的范围
     
-    比如 `glorot_uniform` 方法 (Glorot and Bengio, 2010)
+    比如 `Xavier` 方法 (Glorot and Bengio, 2010) 适用于激活值中心为0
 
     <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=W_{i,j}\sim&space;U\left&space;(&space;-\sqrt&space;\frac{6}{n_{in}&plus;n_{out}},&space;\sqrt&space;\frac{6}{n_{in}&plus;n_{out}}&space;\right&space;)"><img src="../_assets/公式_20180706115540.png" height="" /></a></div>
 
-    > Keras 全连接层默认的**权重**初始化方法
-    
+- He 初始化
+```
+np.sqrt(2. / layers_dims[l - 1])
+````
+
 - **其他初始化方法**
     - 随机正交矩阵（Orthogonal）
     - 截断高斯分布（Truncated normal distribution）
